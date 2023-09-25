@@ -53,16 +53,18 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.fusion.utils"
-            artifactId = "flowbuscore"
-            version = "0.0.1"
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                groupId = "com.fusion.utils"
+                artifactId = "flowbuscore"
+                version = "0.0.1"
 
-            artifact("sourcesJar")
+                artifact("sourcesJar")
 
-//            from(components["release"])
+//                from(components["release"])
+            }
         }
     }
 }
