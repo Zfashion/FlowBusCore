@@ -1,7 +1,11 @@
+import com.android.build.gradle.internal.fusedlibrary.createTasks
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+group = "com.github.zfashion"
 
 android {
     namespace = "com.fusion.flowbuscore"
@@ -45,3 +49,30 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
+
+
+// 指定编码
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+// 打包源码
+/*tasks.register<Jar>("sourcesJar") {
+    from(android.sourceSets.getByName("main").java.srcDirs)
+    classifier = "sources"
+}
+
+tasks.register<Javadoc>("javadoc") {
+    isFailOnError = false
+    source(android.sourceSets.getByName("main").java.getSourceFiles())
+
+    classpath += project.files(android.bootClasspath.joinToString(File.pathSeparator))
+    classpath += configurations["compile"]
+}
+
+artifacts {
+    archives(tasks.named("sourcesJar"))
+}*/
+
+
+
