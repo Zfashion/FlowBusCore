@@ -52,9 +52,9 @@ dependencies {
 
 
 // 指定编码
-tasks.withType<JavaCompile> {
+/*tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-}
+}*/
 
 // 打包源码
 /*tasks.register<Jar>("sourcesJar") {
