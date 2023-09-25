@@ -3,7 +3,10 @@ import com.android.build.gradle.internal.fusedlibrary.createTasks
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
+
+apply("publish.gradle")
 
 group = "com.github.zfashion"
 
@@ -50,16 +53,30 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.fusion.utils"
+            artifactId = "flowbuscore"
+            version = "0.0.1"
+
+            artifact("sourcesJar")
+
+//            from(components["release"])
+        }
+    }
+}
+
 
 // 指定编码
-/*tasks.withType<JavaCompile> {
+tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-}*/
+}
 
 // 打包源码
-/*tasks.register<Jar>("sourcesJar") {
+tasks.register<Jar>("sourcesJar") {
     from(android.sourceSets.getByName("main").java.srcDirs)
-    classifier = "sources"
+    archiveClassifier.set("sources")
 }
 
 tasks.register<Javadoc>("javadoc") {
@@ -72,7 +89,7 @@ tasks.register<Javadoc>("javadoc") {
 
 artifacts {
     archives(tasks.named("sourcesJar"))
-}*/
+}
 
 
 
