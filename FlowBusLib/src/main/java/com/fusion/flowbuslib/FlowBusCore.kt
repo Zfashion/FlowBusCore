@@ -237,7 +237,7 @@ class FlowBusCore: IFlowBusCore {
 
 
 
-    inner class FlowBusEventObserver<T>(
+    private inner class FlowBusEventObserver<T>(
         private val isSticky: Boolean,
         private val key: String,
         private val context: CoroutineContext,
