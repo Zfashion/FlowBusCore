@@ -78,8 +78,10 @@ class FlowBusCore: IFlowBusCore {
         value: T,
         timeMillis: Long
     ) {
-        delay(timeMillis)
-        dealEmit(false, key, value)
+        withContext(Dispatchers.Default) {
+            delay(timeMillis)
+            dealEmit(false, key, value)
+        }
     }
 
 
