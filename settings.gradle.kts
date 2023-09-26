@@ -19,5 +19,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "FlowBusCore"
-include(":app")
+//include(":app")
 include(":FlowBusLib")
