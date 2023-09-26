@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("maven-publish")
+//    id("maven-publish")
 }
 apply("publish.gradle")
 
@@ -11,7 +11,7 @@ var publishLocal = true
 
 android {
     namespace = "com.fusion.flowbuslib"
-    compileSdk = 33
+    compileSdk = 31
 
     defaultConfig {
         minSdk = 24
