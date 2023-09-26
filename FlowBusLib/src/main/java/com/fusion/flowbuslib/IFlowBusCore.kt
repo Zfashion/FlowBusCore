@@ -1,4 +1,4 @@
-package com.fusion.flowbuscore
+package com.fusion.flowbuslib
 
 import androidx.lifecycle.Lifecycle
 import kotlinx.coroutines.CoroutineScope

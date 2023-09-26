@@ -1,0 +1,71 @@
+apply plugin: 'maven-publish'
+
+
+def publishLocal= true
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+                artifact sourceJar // 增加上传源码的 task
+                // You can then customize attributes of the publication as shown below.
+                groupId = "com.fusion.libs"
+                artifactId = "flowbuscore"
+                version = "0.0.1"
+            }
+
+        }
+        repositories {
+            if (publishLocal){
+                maven {
+                    def mavenDirPath = file('../maven') //  相对地址。 编译后的代码将会存在父目录的maven文件夹下。
+                    url = "file://${mavenDirPath.absolutePath}"
+                }
+            }else {
+                maven {
+                    url = mavenUrl
+                    credentials {
+                        username = mavenAccount
+                        password = mavenPassword
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 1. 增加上传源码的task
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = "sources"
+}
+
+//  如果不想生成 javadoc.jar 和 sources.jar 库以下代码可以省略
+def sourceDirs
+if (project.hasProperty("android")) {
+    sourceDirs = android.sourceSets.main.java.srcDirs
+}else {
+    sourceDirs = sourceSets.main.java.srcDirs
+}
+
+task javadocs(type: Javadoc) {
+    source = sourceDirs
+}
+//生成doc
+task javadocsJar(type: Jar) {
+    archiveClassifier.set('javadoc')
+    from javadocs.destinationDir
+}
+//生成sources
+task sourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from sourceDirs
+}
+
+artifacts {
+    archives javadocsJar
+    archives sourcesJar
+}

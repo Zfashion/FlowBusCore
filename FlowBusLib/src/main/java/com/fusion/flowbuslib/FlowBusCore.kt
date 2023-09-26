@@ -1,4 +1,4 @@
-package com.fusion.flowbuscore
+package com.fusion.flowbuslib
 
 import android.util.ArrayMap
 import android.util.Log
