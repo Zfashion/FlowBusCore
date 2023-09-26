@@ -6,12 +6,10 @@ Add it in your root settings.gradle at the end of repositories:
 
 ```groovy
 dependencyResolutionManagement {
-    ...
     repositories {
-    	maven { 
-    		url 'https://jitpack.io' 
-    	}
-    	...
+        maven {
+            url 'https://jitpack.io'
+        }
     }
 }
 ```
