@@ -20,7 +20,7 @@ dependencyResolutionManagement {
 
 ```groovy
 dependencies {
-	  implementation("com.github.Zfashion:FlowBusCore:$TAG")
+    implementation("com.github.Zfashion:FlowBusCore:$TAG")
 }
 ```
 
